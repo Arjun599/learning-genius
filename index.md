@@ -201,8 +201,9 @@ We also investigated further and saw there were no null values for any of the en
 
 <p align="center" style="margin-bottom:0;">
   <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/unique.png" /> <br>
-  <i><b>Figure 2.3</b> indicates that the dataset contains 4208 edible mushrooms and 3916 poisonous mushrooms</i><br>
+  <i><b>Figure 2.3</b> shows the unique labels each feature has</i><br>
 </p>
+The features on the right should play a good role in the classification.
 
 ## Methodology
 
