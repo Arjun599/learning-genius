@@ -197,11 +197,16 @@ To assess the viability of the dataset, we look at how many edible and poisonous
   <i><b>Figure 2.2</b> indicates that the dataset contains 4208 edible mushrooms and 3916 poisonous mushrooms</i><br>
 </p>
 
-We also investigated further and saw there were no null values for any of the entries. This can be seen in Figure 2.1 since the count of all the labels in each feature is equal to the total number of entries in the database. This makes it easier to run models on as all entries are 100% valid and accurately filled in and we do not have to perform additional data-preprocessing. 
+We also investigated further and saw there were no null values for any of the entries. This can be seen in Figure 2.1 since the count of all the labels in each feature is equal to the total number of entries in the database. This makes it easier to run models on as all entries are 100% valid and accurately filled in and we do not have to perform additional data-preprocessing. The number of unique features for each dataset is also something we could look at since it is one of the factors in determining entropy. Figure 2.3 shows the number of unique labels each feature in the dataset has:
+
+<p align="center" style="margin-bottom:0;">
+  <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/unique.png" /> <br>
+  <i><b>Figure 2.3</b> indicates that the dataset contains 4208 edible mushrooms and 3916 poisonous mushrooms</i><br>
+</p>
 
 ## Methodology
 
-To begin with the classification process, we first performed dataset preprocessing and coupled these results with Gaussian Naive Bayes:
+To begin with the classification process, we first performed dataset preprocessing:
 
 ### 1. Data Preprocessing
 
