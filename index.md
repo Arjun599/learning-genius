@@ -194,7 +194,7 @@ To assess the viability of the dataset, we look at how many edible and poisonous
 
 <p align="center" style="margin-bottom:0;">
   <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/different.png" /> <br>
-  <i><b>Figure 2.2</b> indicates that the dataset contains 4208 edible mushrooms and 3916 poisonous mushrooms</i>
+  <i><b>Figure 2.2</b> indicates that the dataset contains 4208 edible mushrooms and 3916 poisonous mushrooms</i><br>
 </p>
 
 We also investigated further and saw there were no null values for any of the entries. This can be seen in Figure 2.1 since the count of all the labels in each feature is equal to the total number of entries in the database. This makes it easier to run models on as all entries are 100% valid and accurately filled in and we do not have to perform additional data-preprocessing. 
@@ -361,7 +361,7 @@ First, we apply PCA for 2 variables on both of the converted datasets to determi
 <p align="center" style="margin-bottom:0;">
   <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/image_0.png" />
   <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/image_1.png" /> <br>
-  <i><b>Figure 3.2</b> shows the PCA results on the converted datasets. The left figure is the results of the dummy data method and the right figure is the results of using the OrdinalEncoder method</i>
+  <i><b>Figure 3.2</b> shows the PCA results on the converted datasets. The left figure is the results of the dummy data method and the right figure is the results of using the OrdinalEncoder method</i><br>
 </p>
 
 
@@ -370,7 +370,7 @@ Because the variances for both methods are so low for 2 variables, we want to kn
  <p align="center" style="margin-bottom:0;">
   <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/image_2.png" />
   <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/image_3.png" /> <br>
-  <i><b>Figure 3.3</b> shows the variance distribution based on the number of features selected for the dummy dataset (top) and OrdinalEncoder dataset (bottom)</i>
+  <i><b>Figure 3.3</b> shows the variance distribution based on the number of features selected for the dummy dataset (top) and OrdinalEncoder dataset (bottom)</i><br>
 </p>
 
 Based on the graph, we see that the OrdinalEncoder dataset’s slope curves slower than the dummy variable dataset. The OrdinalEncoder dataset has a much better performance in terms of variance maximization with the least number of features.
@@ -379,21 +379,21 @@ Another data preprocessing technique we can use is Multiple Correspondence Analy
 
  <p align="center" style="margin-bottom:0;">
   <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/image_4.png" />
-  <i><b>Figure 3.4</b> shows the MCA results and distribution on the converted dataset.</i>
+  <i><b>Figure 3.4</b> shows the MCA results and distribution on the converted dataset.</i><br>
 </p>
 
 From the plot, despite MCA being intended for nominal categorical data, it is clear that the distribution is not very good. One potential cause for this is that MCA is using one hot encoded version of a dataset on CA. Let’s plot inertia relative to the number of components and compare the results to PCA.
  
  <p align="center" style="margin-bottom:0;">
   <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/image_5.png" />
-  <i><b>Figure 3.5</b> shows how variance increases relative to the number of components selected for MCA</i>
+  <i><b>Figure 3.5</b> shows how variance increases relative to the number of components selected for MCA</i><br>
 </p>
 
 The number of components required to reach an inertia (variance) of 0.95 is 59. Clearly, running PCA on the OrdinalEncoder has a much higher performance relative to MCA. Another thing to note about Figure 3.5 is that the graph converges to 1 much quicker than some of the other dimensionality reduction techniques we have seen.
 
 ### 2. ML Model Results & Discussion
 
-Now that we have applied preprocessing techniques to our data, we can run some models on it. The first model we will use on our data is Naive Bayes, which uses the distribution P(Xi | y) in the Bayes rule calculation. We will run Naive Bayes with several different distributions, and also use our preprocessed data, and compare the results.
+Now that we have applied preprocessing techniques to our data, we can run some models on it. The first model we will use on our data is Naive Bayes, which uses the distribution P(X_i|y) in the Bayes rule calculation. We will run Naive Bayes with several different distributions, and also use our preprocessed data, and compare the results.
 
 First, we run a Gaussian Naive Bayes, classifying each of the test data as either poisonous or edible. 
 
@@ -401,14 +401,14 @@ First, we run a Gaussian Naive Bayes, classifying each of the test data as eithe
   <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/image_6.png" 
        width="200" 
      height="400"/><br>
-  <i><b>Figure 4.1</b> shows the classification of each test data after Gaussian Naive Bayes is run, with each data point being labeled as either poisonous or edible.</i>
+  <i><b>Figure 4.1</b> shows the classification of each test data after Gaussian Naive Bayes is run, with each data point being labeled as either poisonous or edible.</i><br>
 </p>
 
 Doing so yields a surprisingly high accuracy of 91.57%. The results can be visualized through a confusion matrix. 
 
  <p align="center" style="margin-bottom:0;">
   <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/image_7.png" /> <br>
-  <i><b>Figure 4.2</b> shows the confusion matrix of running a Gaussian Naive Bayes on the data</i>
+  <i><b>Figure 4.2</b> shows the confusion matrix of running a Gaussian Naive Bayes on the data</i><br>
 </p>
 
 From Figure 4.2 the true positives and true negatives are much greater in magnitude than the false positives and negatives, which matches our high accuracy of about 92%.
@@ -417,7 +417,7 @@ Next, we see if we can do better by running the same Gaussian Naive Bayes model,
 
 <p align="center" style="margin-bottom:0;">
   <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/image_8.png" /><br>
-  <i><b>Figure 4.3</b> shows the confusion matrix of running a Gaussian Naive Bayes on the data after it is preprocessed using MCA</i>
+  <i><b>Figure 4.3</b> shows the confusion matrix of running a Gaussian Naive Bayes on the data after it is preprocessed using MCA</i><br>
 </p>
 
 From Figure 4.3, we see that the number of false positives has skyrocketed, while the number of false negatives has dropped to zero. Clearly, this strategy didn’t work out, so we take a different approach.
@@ -426,7 +426,7 @@ Our data is being grouped into two sets, either poisonous or edible, so perhaps 
 
 <p align="center" style="margin-bottom:0;">
   <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/image_9.png" /><br>
-  <i><b>Figure 4.4</b> shows the confusion matrix for the Categorical Naive Bayes Model</i>
+  <i><b>Figure 4.4</b> shows the confusion matrix for the Categorical Naive Bayes Model</i><br>
 </p>
 
 Relative to Gaussian Naive Bayes, the areas that were improved upon in Categorical Naive Bayes were increasing the True positive rate while decreasing the False Positive rate.
@@ -435,7 +435,7 @@ Though it is apparent that Categorical Naive Bayes represents our data very well
 
 <p align="center" style="margin-bottom:0;">
   <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/image_10.png" /><br>
-  <i><b>Figure 4.5</b> shows the accuracy of a Naive Bayes model on the data using assuming different types of distributions</i>
+  <i><b>Figure 4.5</b> shows the accuracy of a Naive Bayes model on the data using assuming different types of distributions</i><br>
 </p>
 
 From Figure 4.5, we can see that a Categorical distribution yields the highest accuracy, which matches our specific dataset, as the data is grouped into two sets.
@@ -444,14 +444,14 @@ Though categorical distribution is very effective, we can still apply other clas
 
 <p align="center" style="margin-bottom:0;">
   <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/image_11.png" /><br>
-  <i><b>Figure 4.6</b> shows the implementation of a basic decision tree on the dataset and its confusion matrix</i>
+  <i><b>Figure 4.6</b> shows the implementation of a basic decision tree on the dataset and its confusion matrix</i><br>
 </p>
 
 Based on the results of the decision tree, there is an overwhelmingly large number of true positives and true negatives, with very few false positives. The accuracy for this unoptimized decision tree was 92.31%. Therefore, it seems like our data set appears to be particularly well suited for supervised machine learning models. In this example, we set the max tree depth to be quite small. Though the small max tree depth makes overfitting unlikely, we can still optimize maximum depth and increase accuracy. We optimized the maximum depth parameter and determined a value of 7. The confusion matrix result is shown in Figure 4.7.
 
 <p align="center" style="margin-bottom:0;">
   <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/image_13.png" /><br>
-  <i><b>Figure 4.7</b> shows the confusion matrix results of the decision tree with a maximum depth of 7 on the dataset. Note the 100% accuracy</i>
+  <i><b>Figure 4.7</b> shows the confusion matrix results of the decision tree with a maximum depth of 7 on the dataset. Note the 100% accuracy</i><br>
 </p>
 
 
@@ -461,7 +461,7 @@ Therefore using 20% of our data for training purposes and 80% of our data for te
 
 <p align="center" style="margin-bottom:0;">
   <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/image_14.png" /><br>
-  <i><b>Figure 4.8</b> displays the accuracy results in using our optimized decision tree model with differing levels of testing and training data splits.</i>
+  <i><b>Figure 4.8</b> displays the accuracy results in using our optimized decision tree model with differing levels of testing and training data splits.</i><br>
 </p>
  
 
@@ -469,7 +469,7 @@ These results are impressive and show that the optimized decision tree classific
 
 <p align="center" style="margin-bottom:0;">
   <img src="https://raw.githubusercontent.com/Arjun599/learning-genius/gh-pages/images/image_15.png" /><br>
-  <i><b>Figure 4.9</b> displays the accuracy results in using a non-optimized random forest classification model with differing levels of testing and training data splits.</i>
+  <i><b>Figure 4.9</b> displays the accuracy results in using a non-optimized random forest classification model with differing levels of testing and training data splits.</i><br>
 </p>
 
 These results are even more astonishing than the optimized decision tree model’s results. Our accuracy remains at 100% despite only having 10% training data and 90% testing data. Using only 5% of our data as training data and 95% of our data as testing data, we achieve an accuracy of 99.33%. 
