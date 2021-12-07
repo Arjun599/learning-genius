@@ -399,7 +399,7 @@ The number of components required to reach an inertia (variance) of 0.95 is 59. 
 
 ### 2. ML Model Results & Discussion
 
-Now that we have applied preprocessing techniques to our data, we can run some models on it. The first model we will use on our data is Naive Bayes, which uses the distribution P(X_i|y) in the Bayes rule calculation. We will run Naive Bayes with several different distributions, and also use our preprocessed data, and compare the results.
+Now that we have applied preprocessing techniques to our data, we can run some models on it. The first model we will use on our data is Naive Bayes, which uses the distribution P(X_i,y)/P(y) in the Bayes rule calculation. We will run Naive Bayes with several different distributions, and also use our preprocessed data, and compare the results.
 
 First, we run a Gaussian Naive Bayes, classifying each of the test data as either poisonous or edible. 
 
