@@ -1,6 +1,6 @@
-**CS 4641 Final Report**
+# CS 4641 Final Project Team 35: Mushroom Classification
 
-**Background & Problem Definition**
+## Background and Problem Definition
 
 Mushrooms are a staple food in many parts of the world. However, we have always been cautioned to never eat wild mushrooms since many mushrooms can be poisonous and induce serious symptoms such as seizures, hallucinations, breathing difficulties, kidney/liver failure, coma, or death. In fact, according to The National Poison Data System (NPDS) from 1999 to 2016, 133700 cases, or roughly 7428 cases per year, of mushroom exposure have been reported [1]. This staggering statistic coupled with a recent trend of mushroom hunting (or "shrooming") makes it even more imperative that we can accurately identify which mushrooms are edible and which ones are inedible.
 
@@ -8,7 +8,7 @@ A way we can classify if a mushroom is edible or not is by looking at the physic
 
 Therefore, for this project, our objective is to create a machine learning model that can predict how edible a mushroom is based on the physical features of the mushrooms as accurately as possible. This will not only be a useful and convenient tool for mushroom hunters, but can also prevent people from mistakenly ingesting a potentially toxic mushroom.
 
-**Overview of the Dataset**
+## Overview of the Dataset
 
 To approach this problem, we decided to use a public domain dataset that was provided by The Audubon Society Field Guide to North American Mushrooms. This dataset consists of descriptions of hypothetical samples corresponding to 23 species of gilled mushrooms. Although this dataset is nearly 30 years old, it is still relevant since the question of classifying mushrooms based on their edibility remains unanswered. This dataset has 8124 entries and each entry has 23 attributes. The class attribute corresponds to the edibleness of the mushroom (either edible or poisonous). The remaining 22 attributes are used to specify the physical appearance of each mushroom. These attributes are: cap-shape, cap-surface, cap-color, bruises, odor, gill-attachment, gill-spacing, gill-size, gill-color, stalk-shape, stalk-root, stalk-surface-above-ring, stalk-surface-below-ring, stalk-color-above-ring, stalk-color-below-ring, veil-type, veil-color, ring-number, ring-type, spore-print-color, population, and habitat. Figure 2.1 shows the statistics of these features:
 
@@ -194,11 +194,11 @@ To assess the viability of the dataset, we look at how many edible and poisonous
 
 We also investigated further and saw there were no null values for any of the entries. This can be seen in Figure 2.1 since the count of all the labels in each feature is equal to the total number of entries in the database. This makes it easier to run models on as all entries are 100% valid and accurately filled in and we do not have to perform additional data-preprocessing. 
 
-**Methodology**
+## Methodology
 
 To begin with the classification process, we first performed dataset preprocessing and coupled these results with Gaussian Naive Bayes:
 
-1. **Data Preprocessing**
+### 1. Data Preprocessing
 
 We have determined that our dataset is in fact balanced and usable. However, one issue that we can immediately see is that the dataset does not contain any numerical data. All the data is categorical and running machine models using categorical data is often very difficult if not impossible. To remedy this issue, we employed two ways to convert our dataset into one with numerical features: dummy coding and the OrdinalEncoder in Python's sklearn library. We expect different results on these generated datasets when we perform data-preprocessing.
 
@@ -354,7 +354,7 @@ First, we apply PCA for 2 variables on both of the converted datasets to determi
 
 ![image alt text](image_0.png)![image alt text](image_1.png)
 
-**Figure 3.2 **shows the PCA results on the converted datasets. The left figure is the results of the dummy data method and the right figure is the results of using the OrdinalEncoder method
+**Figure 3.2**shows the PCA results on the converted datasets. The left figure is the results of the dummy data method and the right figure is the results of using the OrdinalEncoder method
 
 Because the variances for both methods are so low for 2 variables, we want to know how many variables we need to have to have at a minimum total variance of 0.95. We calculate that the number of features we require to meet our requirements for the OrdinalEncoder dataset is 16. The number of features we require to meet our requirements for the dummy variable dataset is 59. We graph the variance distribution based on the number of features selected for each of the databases to determine performance as shown in Figure 3.3 below.
 
@@ -362,7 +362,7 @@ Because the variances for both methods are so low for 2 variables, we want to kn
 
 ![image alt text](image_2.png)![image alt text](image_3.png)
 
-**Figure 3.3 **shows the variance distribution based on the number of features selected for the dummy dataset (left) and OrdinalEncoder dataset (right)
+**Figure 3.3**shows the variance distribution based on the number of features selected for the dummy dataset (left) and OrdinalEncoder dataset (right)
 
 Based on the graph, we see that the OrdinalEncoder dataset’s slope curves slower than the dummy variable dataset. The OrdinalEncoder dataset has a much better performance in terms of variance maximization with the least number of features.
 
@@ -376,11 +376,11 @@ From the plot, despite MCA being intended for nominal categorical data, it is cl
 
 ![image alt text](image_5.png)
 
-**Figure 3.5 **shows how variance increases relative to the number of components selected for MCA
+**Figure 3.5**shows how variance increases relative to the number of components selected for MCA
 
 The number of components required to reach an inertia (variance) of 0.95 is 59. Clearly, running PCA on the OrdinalEncoder has a much higher performance relative to MCA. Another thing to note about Figure 3.5 is that the graph converges to 1 much quicker than some of the other dimensionality reduction techniques we have seen.
 
-2. **ML Model Results & Discussion**
+### 2. ML Model Results & Discussion
 
 Now that we have applied preprocessing techniques to our data, we can run some models on it. The first model we will use on our data is Naive Bayes, which uses the distribution P(Xi | y) in the Bayes rule calculation. We will run Naive Bayes with several different distributions, and also use our preprocessed data, and compare the results.
 
@@ -388,13 +388,13 @@ First, we run a Gaussian Naive Bayes, classifying each of the test data as eithe
 
 ![image alt text](image_6.png)
 
-**Figure 4.1 **shows the classification of each test data after Gaussian Naive Bayes is run, with each data point being labeled as either poisonous or edible.
+**Figure 4.1**shows the classification of each test data after Gaussian Naive Bayes is run, with each data point being labeled as either poisonous or edible.
 
 Doing so yields a surprisingly high accuracy of 91.57%. The results can be visualized through a confusion matrix. 
 
 ![image alt text](image_7.png)
 
-**Figure 4.2 **shows the confusion matrix of running a Gaussian Naive Bayes on the data
+**Figure 4.2**shows the confusion matrix of running a Gaussian Naive Bayes on the data
 
 From Figure 4.1 the true positives and true negatives are much greater in magnitude than the false positives and negatives, which matches our high accuracy of about 92%.
 
@@ -402,7 +402,7 @@ Next, we see if we can do better by running the same Gaussian Naive Bayes model,
 
 ![image alt text](image_8.png)
 
-**Figure 4.3 **shows the confusion matrix of running a Gaussian Naive Bayes on the data after it is preprocessed using MCA
+**Figure 4.3**shows the confusion matrix of running a Gaussian Naive Bayes on the data after it is preprocessed using MCA
 
 From Figure 4.3, we see that the number of false positives has skyrocketed, while the number of false negatives has dropped to zero. Clearly, this strategy didn’t work out, so we take a different approach.
 
@@ -410,7 +410,7 @@ Our data is being grouped into two sets, either poisonous or edible, so perhaps 
 
 ![image alt text](image_9.png) 
 
-** Figure 4.4 **shows the confusion matrix for the Categorical Naive Bayes Model
+** Figure 4.4**shows the confusion matrix for the Categorical Naive Bayes Model
 
 Relative to Gaussian Naive Bayes, the areas that were improved upon in Categorical Naive Bayes were increasing the True positive rate while decreasing the False Positive rate.
 
@@ -418,7 +418,7 @@ Though it is apparent that Categorical Naive Bayes represents our data very well
 
 ![image alt text](image_10.png)
 
-**Figure 4.5 **shows the accuracy of a Naive Bayes model on the data using assuming different types of distributions
+**Figure 4.5**shows the accuracy of a Naive Bayes model on the data using assuming different types of distributions
 
 From Figure 4.5, we can see that a Categorical distribution yields the highest accuracy, which matches our specific dataset, as the data is grouped into two sets.
 
@@ -440,7 +440,7 @@ Therefore using 20% of our data for training purposes and 80% of our data for te
 
 ![image alt text](image_14.png)
 
-**Figure 4.7 **displays the accuracy results in using our optimized decision tree model with differing levels of testing and training data splits.
+**Figure 4.7**displays the accuracy results in using our optimized decision tree model with differing levels of testing and training data splits.
 
  
 
@@ -448,7 +448,7 @@ These results are impressive and show that the optimized decision tree classific
 
 ![image alt text](image_15.png)
 
-**Figure 4.7 **displays the accuracy results in using a non-optimized random forest classification model with differing levels of testing and training data splits. 
+**Figure 4.7**displays the accuracy results in using a non-optimized random forest classification model with differing levels of testing and training data splits. 
 
 These results are even more astonishing than the optimized decision tree model’s results. Our accuracy remains at 100% despite only having 10% training data and 90% testing data. Using only 5% of our data as training data and 95% of our data as testing data, we achieve an accuracy of 99.33%. 
 
@@ -458,7 +458,7 @@ Finally, to test our knowledge of neural networks, we implemented a neural netwo
 
 Having achieved 100% accuracy with the models implemented, it seems redundant and unnecessary to implement any other further complex models on our dataset. 
 
-**Conclusions**
+## Conclusions
 
 Figure 5.1 below is a summary of the models we implemented and ran against our dataset using 20% of our data for training purposes and 80% of our data for testing purposes:
 
@@ -498,9 +498,9 @@ Figure 5.1 below is a summary of the models we implemented and ran against our d
 </table>
 
 
-**Figure 5.1 **shows a summary of the accuracies received from the 8 classification models we studied with 20% of our data for training purposes and 80% of our data for testing purposes.
+**Figure 5.1**shows a summary of the accuracies received from the 8 classification models we studied with 20% of our data for training purposes and 80% of our data for testing purposes.
 
-We noticed that we** **achieved excellent initial success using simple models like Naive Bayes and decision trees. Therefore, we believe that this dataset has key attributes that make prediction easy. Looking at our data-preprocessing may help with determining if this is true. In our pre-processing using PCA and MCA (Figure 3.3 and 3.4), the visuals show that the poisonous and edible mushrooms are not scattered randomly, but are instead clumped together rather tightly. This means that in our dataset, if there is a poisonous mushroom, it is extremely likely that there is another poisonous mushroom that shares very similar characteristics. Likewise, if there is an edible mushroom, it is extremely likely that there is another edible mushroom that shares very similar characteristics. The absence of outliers from the PCA and MCA visuals are a proof of this fact. This can explain why the results for our models have such high accuracy and a low amount of false positives and false negatives.
+We noticed that we achieved excellent initial success using simple models like Naive Bayes and decision trees. Therefore, we believe that this dataset has key attributes that make prediction easy. Looking at our data-preprocessing may help with determining if this is true. In our pre-processing using PCA and MCA (Figure 3.3 and 3.4), the visuals show that the poisonous and edible mushrooms are not scattered randomly, but are instead clumped together rather tightly. This means that in our dataset, if there is a poisonous mushroom, it is extremely likely that there is another poisonous mushroom that shares very similar characteristics. Likewise, if there is an edible mushroom, it is extremely likely that there is another edible mushroom that shares very similar characteristics. The absence of outliers from the PCA and MCA visuals are a proof of this fact. This can explain why the results for our models have such high accuracy and a low amount of false positives and false negatives.
 
 If we compare our results to some other models out there implemented on this dataset, we see that the results match. Many other models do indeed have close to 100% accuracy on the dataset. The unique perspective we bring to the table is the addition of analysis with a training dataset that is of a lower percentage. We have compared the results when the training dataset is only 5% of the data and when it is 20% of the data, and found that the reduction in accuracy is not huge. This leads us to the conclusion that, for this dataset, a low percentage of data is a good representation of the entire dataset. There is not much variation in the entire dataset, and that is why choosing a lower number of data points also does not lead to a great reduction in accuracy. This could be one of the reasons for why we are getting such high accuracy for the models we have applied to this dataset. 
 
