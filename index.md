@@ -534,7 +534,7 @@ If we compare our results to some other models out there implemented on this dat
 
 To reconfirm our beliefs, we tested multiple more complex models and arrived at results that supported our predictions. Since this high level of accuracy can be achieved by using simpler models, it is likely that real-world applications would favor such simpler models instead of implementing complex and expensive machine learning models. In other words, even though we have achieved better performance with a random forest and a neural network than a decision tree, it is likely that in practice we would opt for a simpler model such as the optimized decision tree. This is because in comparison to the more complex models the reduction in accuracy is very minute and almost unnoticeable and the complexity, computing power, and time required to run the more advanced models is high. The accuracy for the decision tree using 20% of our data for training purposes and 80% of our data for testing purposes is at 100% which is undeniably extremely good. All in all, we were successful in creating a machine learning model that yielded very high accuracy on this dataset and are hopeful that this model is applicable to those studying the ediblity of mushrooms.
 
-**References**
+## References
 
 [1] [https://pubmed.ncbi.nlm.nih.gov/30062915/](https://pubmed.ncbi.nlm.nih.gov/30062915/)
 
