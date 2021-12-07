@@ -190,7 +190,11 @@ Based on Figure 2.1, we determine that it is possible for each feature to have m
 
 To assess the viability of the dataset, we look at how many edible and poisonous mushrooms are provided. If the number of edible and poisonous mushrooms are roughly the same, we know we have a good representation of edible and poisonous mushrooms to train our models. Figure 2.2 below shows that the dataset is viable and balanced
 
-![Differentiation](/learning-genius/images/Screenshot 2021-12-07 at 12.29.25 AM.png)
+
+<p>
+    <img src="/learning-genius/images/different.pngS" width="220" height="240" />
+</p>
+![Differentiation](/learning-genius/images/different.png)
 **Figure 2.2** indicates that the dataset contains 4208 edible mushrooms and 3916 poisonous mushrooms
 
 We also investigated further and saw there were no null values for any of the entries. This can be seen in Figure 2.1 since the count of all the labels in each feature is equal to the total number of entries in the database. This makes it easier to run models on as all entries are 100% valid and accurately filled in and we do not have to perform additional data-preprocessing. 
